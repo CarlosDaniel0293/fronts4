@@ -1,0 +1,185 @@
+.App {
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .App-header {
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para resaltar el texto blanco */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .App-header h1 {
+    color: white; /* Cambia el color del texto a blanco */
+    margin: 0;
+    font-size: 2rem; /* Tamaño del texto, ajusta según tu preferencia */
+  }
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif; /* Fuente general */
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://images.unsplash.com/photo-1499088513455-78ed88b7a5b4?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODE0OTQ3MzM&ixlib=rb-4.0.3&q=85);
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente para legibilidad */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    margin-bottom: 20px; /* Espacio entre el cuadro de búsqueda/botón y los GIFs */
+}
+
+.gif-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gif-container a {
+    display: block;
+    max-width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 0 3px white, 0 5px 8px 3px rgba(0, 0, 0, 0.6);
+    transition: transform 0.1s ease-in-out;
+}
+
+.gif-container a img {
+    transform: scale(1);
+    transition: transform 0.1s ease-in-out;
+    filter: grayscale(50%);
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.gif-container a:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* Lightbox (opcional) */
+.lightbox {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.lightbox:target {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+.lightbox a.nav {
+    text-decoration: none;
+    color: white;
+    font-size: 40px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+    opacity: 0.5;
+    font-weight: 200;
+}
+
+.lightbox a.nav:hover {
+    opacity: 1;
+}
+
+.lightbox .target {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    transform: scale(0);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lightbox .content {
+    transform: scale(0.9);
+    opacity: 0;
+    flex: 1;
+    align-self: center;
+    max-height: 100%;
+    min-height: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px white, 0 5px 8px 3px rgba(0, 0, 0, 0.6);
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+.lightbox .content img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    display: block;
+    margin: 0;
+}
+
+.lightbox:target .content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.lightbox .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: white;
+}
